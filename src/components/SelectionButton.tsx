@@ -46,7 +46,7 @@ function SelectionButton({ variant, handleClick }: Props) {
       onClick={handleClick}
       className={`${baseStyles} ${variantStyles[variant]}`}
     >
-      <div className="z-50 h-full w-full rounded-full shadow-md">
+      <div className="h-full w-full rounded-full shadow-md">
         <div
           className="
           shadow-userButtonInnerRingShadow flex h-full w-full items-center justify-center 
