@@ -34,6 +34,11 @@ export default {
           "radial-gradient(circle at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%))",
         userPentagonBg: "url('/bg-pentagon.svg')",
       },
+      boxShadow: {
+        userButtonOuterRingShadow: "inset 0px -8px 0px 0px rgba(0,0,0,0.2)",
+        userButtonInnerRingShadow:
+          "inset 0px 10px 0px -6px rgba(133,133,133,0.3)",
+      },
     },
   },
   plugins: [],

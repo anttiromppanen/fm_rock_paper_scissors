@@ -1,13 +1,19 @@
+import useGameStore from "../../store/useGameStore";
+import SelectionViewer from "../SelectionViewer";
+
 interface Props {
   setValueSelected: (value: boolean) => void;
 }
 
 function ResultView({ setValueSelected }: Props) {
+  const playerSelection = useGameStore((state) => state.playerSelection);
+  const computerSelection = useGameStore((state) => state.computerSelection);
+
   return (
     <div>
       <div className="flex w-full justify-between text-center text-white">
-        <p>Paper</p>
-        <p>Computer: todo</p>
+        <SelectionViewer variant={playerSelection} />
+        <SelectionViewer variant={computerSelection} />
       </div>
       <button
         type="button"

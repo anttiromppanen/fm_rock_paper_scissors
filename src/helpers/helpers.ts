@@ -1,7 +1,7 @@
-import { GameValues } from "../types/types";
+import { GameValues, PlayerVsComputerOutcomes } from "../types/types";
 
 /* eslint-disable import/prefer-default-export */
-export const playerVsComputerOutcomes = {
+export const playerVsComputerOutcomes: PlayerVsComputerOutcomes = {
   rock: {
     rock: 0,
     paper: -1,
@@ -49,4 +49,4 @@ export const getRandomGameValue = (values = gameValues): GameValues => {
 export const playerVsComputer = (
   playerValue: GameValues,
   computerValue: GameValues,
-): number => playerVsComputerOutcomes[playerValue][computerValue];
+): -1 | 0 | 1 => playerVsComputerOutcomes[playerValue][computerValue];

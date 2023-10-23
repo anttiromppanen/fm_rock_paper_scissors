@@ -1,4 +1,6 @@
 import { getRandomGameValue, playerVsComputer } from "../../helpers/helpers";
+import useGameStore from "../../store/useGameStore";
+import { GameValues } from "../../types/types";
 import SelectionButton from "../SelectionButton";
 
 interface Props {
@@ -6,30 +8,44 @@ interface Props {
 }
 
 function GameView({ setValueSelected }: Props) {
-  const handlePaperClick = () => {
-    const randomGameValue = getRandomGameValue();
-    console.log(
-      `Paper vs ${randomGameValue} = ${playerVsComputer(
-        "paper",
-        randomGameValue,
-      )}`,
-    );
+  const setScore = useGameStore((state) => state.setScore);
+  const setPlayerSelection = useGameStore((state) => state.setPlayerSelection);
+  const setComputerSelection = useGameStore(
+    (state) => state.setComputerSelection,
+  );
 
+  const handleClick = (variant: GameValues) => {
+    const randomGameValue = getRandomGameValue();
+    setPlayerSelection(variant);
+    setComputerSelection(randomGameValue);
+
+    const result = playerVsComputer(variant, randomGameValue);
+    setScore(result);
     setValueSelected(true);
   };
+
   return (
-    <div className="bg-userPentagonBg relative mx-auto h-52 max-w-[264px] bg-contain bg-center bg-no-repeat">
-      <SelectionButton variant="scissors" handleClick={handlePaperClick} />
-      <button
-        aria-label="Select Spock"
-        type="button"
-        className="absolute -left-4 top-6 h-24 w-24 rounded-full bg-teal-500"
+    <div
+      className="
+      bg-userPentagonBg relative mx-auto h-52 max-w-[264px] bg-contain bg-center bg-no-repeat"
+    >
+      <SelectionButton
+        variant="scissors"
+        handleClick={() => handleClick("scissors")}
       />
-      <button
-        aria-label="Select Paper"
-        type="button"
-        className="absolute -right-4 top-6 h-24 w-24 rounded-full bg-blue-500"
+      <SelectionButton
+        variant="spock"
+        handleClick={() => handleClick("spock")}
       />
+      <SelectionButton
+        variant="paper"
+        handleClick={() => handleClick("paper")}
+      />
+      <SelectionButton
+        variant="lizard"
+        handleClick={() => handleClick("lizard")}
+      />
+      <SelectionButton variant="rock" handleClick={() => handleClick("rock")} />
     </div>
   );
 }
