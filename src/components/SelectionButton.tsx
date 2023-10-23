@@ -1,9 +1,9 @@
-import { GameValues } from "../types/types";
+import lizard from "../assets/images/icon-lizard.svg";
+import paper from "../assets/images/icon-paper.svg";
+import rock from "../assets/images/icon-rock.svg";
 import scissors from "../assets/images/icon-scissors.svg";
 import spock from "../assets/images/icon-spock.svg";
-import paper from "../assets/images/icon-paper.svg";
-import lizard from "../assets/images/icon-lizard.svg";
-import rock from "../assets/images/icon-rock.svg";
+import { GameValues } from "../types/types";
 
 const imageSelector = (variant: GameValues) => {
   switch (variant) {
@@ -39,6 +39,7 @@ interface Props {
 function SelectionButton({ variant, handleClick }: Props) {
   const baseStyles =
     "absolute h-24 w-24 rounded-full p-3 shadow-userButtonOuterRingShadow";
+
   return (
     <button
       aria-label={`Select ${variant}`}

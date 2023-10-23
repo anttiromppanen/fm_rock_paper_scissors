@@ -1,12 +1,22 @@
 import { useState } from "react";
+import { AnimatePresence, Variants, motion } from "framer-motion";
 import logo from "./assets/images/logo-bonus.svg";
 import GameView from "./components/GameView/GameView";
 import ResultView from "./components/ResultView/ResultView";
 import useGameStore from "./store/useGameStore";
 
+const gameViewVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    scale: 1.5,
+    transition: { duration: 0.5 },
+  },
+  show: {},
+};
+
 function App() {
   const score = useGameStore((state) => state.score);
-  const [valueSelected, setValueSelected] = useState(false);
+  const [valueSelected, setValueSelected] = useState(true);
 
   return (
     <main className="bg-userRadialBg h-[100dvh] md:h-screen">
@@ -21,11 +31,19 @@ function App() {
             <p className="text-userDarkText text-5xl font-bold">{score}</p>
           </div>
         </header>
-        {valueSelected ? (
-          <ResultView setValueSelected={setValueSelected} />
-        ) : (
-          <GameView setValueSelected={setValueSelected} />
-        )}
+        <AnimatePresence>
+          {valueSelected ? (
+            <ResultView setValueSelected={setValueSelected} />
+          ) : (
+            <motion.div
+              key="gameView"
+              exit="hidden"
+              variants={gameViewVariants}
+            >
+              <GameView setValueSelected={setValueSelected} />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </main>
   );
