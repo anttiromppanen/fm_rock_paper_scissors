@@ -10,10 +10,10 @@ function ResultView({ setValueSelected }: Props) {
   const computerSelection = useGameStore((state) => state.computerSelection);
 
   return (
-    <div>
+    <div className="mt-20">
       <div className="flex w-full justify-between text-center text-white">
-        <SelectionViewer variant={playerSelection} />
-        <SelectionViewer variant={computerSelection} />
+        <SelectionViewer variant={playerSelection} text="YOU PICKED" />
+        <SelectionViewer variant={computerSelection} text="THE HOUSE PICKED" />
       </div>
       <button
         type="button"

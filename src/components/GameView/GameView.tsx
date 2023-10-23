@@ -27,7 +27,7 @@ function GameView({ setValueSelected }: Props) {
   return (
     <div
       className="
-      bg-userPentagonBg relative mx-auto h-52 max-w-[264px] bg-contain bg-center bg-no-repeat"
+      bg-userPentagonBg relative mx-auto mt-32 h-52 max-w-[264px] bg-contain bg-center bg-no-repeat"
     >
       <SelectionButton
         variant="scissors"
