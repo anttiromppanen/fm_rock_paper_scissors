@@ -1,6 +1,5 @@
 import { GameValues, PlayerVsComputerOutcomes } from "../types/types";
 
-/* eslint-disable import/prefer-default-export */
 export const playerVsComputerOutcomes: PlayerVsComputerOutcomes = {
   rock: {
     rock: 0,

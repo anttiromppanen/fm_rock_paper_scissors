@@ -23,6 +23,7 @@ interface Props {
 function GameView({ setValueSelected }: Props) {
   const setScore = useGameStore((state) => state.setScore);
   const setPlayerSelection = useGameStore((state) => state.setPlayerSelection);
+  const setLastWinner = useGameStore((state) => state.setLastWinner);
   const setComputerSelection = useGameStore(
     (state) => state.setComputerSelection,
   );
@@ -34,6 +35,7 @@ function GameView({ setValueSelected }: Props) {
 
     const result = playerVsComputer(variant, randomGameValue);
     setScore(result);
+    setLastWinner(result);
     setValueSelected(true);
   };
 
