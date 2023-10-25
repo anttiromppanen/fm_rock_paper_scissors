@@ -16,14 +16,11 @@ const animationVariants: Variants = {
   },
 };
 
-interface Props {
-  setValueSelected: (value: boolean) => void;
-}
-
-function GameView({ setValueSelected }: Props) {
+function GameView() {
   const setScore = useGameStore((state) => state.setScore);
   const setPlayerSelection = useGameStore((state) => state.setPlayerSelection);
   const setLastWinner = useGameStore((state) => state.setLastWinner);
+  const setValueSelected = useGameStore((state) => state.setValueSelected);
   const setComputerSelection = useGameStore(
     (state) => state.setComputerSelection,
   );
@@ -45,7 +42,7 @@ function GameView({ setValueSelected }: Props) {
       initial="hidden"
       animate="show"
       className="
-      bg-userPentagonBg relative mx-auto mt-32 h-52 max-w-[264px] bg-contain bg-center bg-no-repeat"
+      relative mx-auto mt-32 h-52 max-w-[264px] bg-userPentagonBg bg-contain bg-center bg-no-repeat"
     >
       <SelectionButton
         variant="scissors"

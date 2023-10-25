@@ -10,13 +10,10 @@ const animationVariants = {
   },
 };
 
-interface Props {
-  setValueSelected: (value: boolean) => void;
-}
-
-function ResultView({ setValueSelected }: Props) {
+function ResultView() {
   const playerSelection = useGameStore((state) => state.playerSelection);
   const computerSelection = useGameStore((state) => state.computerSelection);
+  const setValueSelected = useGameStore((state) => state.setValueSelected);
 
   return (
     <div className="mt-20">

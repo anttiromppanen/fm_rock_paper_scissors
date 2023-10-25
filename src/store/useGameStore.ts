@@ -5,6 +5,7 @@ interface State {
   score: number;
   playerSelection: GameValues;
   computerSelection: GameValues;
+  valueSelected: boolean;
   lastWinner: "player" | "computer" | "tie";
 }
 
@@ -13,6 +14,7 @@ interface Actions {
   setPlayerSelection: (playerSelection: GameValues) => void;
   setComputerSelection: (computerSelection: GameValues) => void;
   setLastWinner: (outcome: OutcomeValue) => void;
+  setValueSelected: (valueSelected: boolean) => void;
 }
 
 const useGameStore = create<State & Actions>((set) => ({
@@ -20,9 +22,11 @@ const useGameStore = create<State & Actions>((set) => ({
   playerSelection: "paper",
   computerSelection: "paper",
   lastWinner: "tie",
+  valueSelected: false,
   setScore: (value) => set((state) => ({ score: state.score + value })),
   setPlayerSelection: (playerSelection) => set({ playerSelection }),
   setComputerSelection: (computerSelection) => set({ computerSelection }),
+  setValueSelected: (valueSelected) => set({ valueSelected }),
   setLastWinner: (outcome) => {
     let winner: "player" | "computer" | "tie" = "tie";
     if (outcome === 1) {
