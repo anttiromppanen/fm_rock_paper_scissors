@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import useGameStore from "../../store/useGameStore";
 import SelectionViewer from "../SelectionViewer";
+import OutcomeViewer from "./OutcomeViewer";
 
 const animationVariants = {
   show: {
@@ -13,7 +14,6 @@ const animationVariants = {
 function ResultView() {
   const playerSelection = useGameStore((state) => state.playerSelection);
   const computerSelection = useGameStore((state) => state.computerSelection);
-  const setValueSelected = useGameStore((state) => state.setValueSelected);
 
   return (
     <div className="mt-20">
@@ -39,13 +39,7 @@ function ResultView() {
           </motion.div>
         </motion.div>
       </div>
-      <button
-        type="button"
-        onClick={() => setValueSelected(false)}
-        className="text-white"
-      >
-        Play again
-      </button>
+      <OutcomeViewer />
     </div>
   );
 }
