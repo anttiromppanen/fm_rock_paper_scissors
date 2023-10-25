@@ -29,7 +29,7 @@ function OutcomeViewer() {
       variants={animationVariants}
       initial="hidden"
       animate="show"
-      className="mt-16 flex flex-col items-center"
+      className="z-10 mx-auto mt-16 flex basis-full flex-col items-center md:order-2 md:m-0 md:basis-auto"
     >
       <h1 className="text-6xl tracking-wide text-white">{outcomeText()}</h1>
       <button

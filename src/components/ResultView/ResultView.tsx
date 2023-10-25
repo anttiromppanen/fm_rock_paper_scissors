@@ -17,11 +17,16 @@ function ResultView() {
 
   return (
     <div className="mt-20">
-      <div className="flex w-full justify-between text-center text-white">
+      <div
+        className="
+        flex flex-wrap items-center justify-between text-center text-white
+        md:justify-center md:gap-x-6 lg:gap-x-10 xl:gap-x-20"
+      >
         <motion.div
           variants={animationVariants}
           initial={{ opacity: 0, x: -100 }}
           animate="show"
+          className="md:order-2"
         >
           <SelectionViewer
             variant={playerSelection}
@@ -33,6 +38,7 @@ function ResultView() {
           variants={animationVariants}
           initial={{ opacity: 0, x: 100 }}
           animate="show"
+          className="md:order-3"
         >
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <SelectionViewer
@@ -43,8 +49,8 @@ function ResultView() {
             />
           </motion.div>
         </motion.div>
+        <OutcomeViewer />
       </div>
-      <OutcomeViewer />
     </div>
   );
 }

@@ -72,8 +72,9 @@ function SelectionViewer({
 }: Props) {
   const lastWinner = useGameStore((state) => state.lastWinner);
 
-  const baseStyles =
-    "h-32 w-32 rounded-full relative flex justify-center p-4 items-center z-10";
+  const baseStyles = `
+    h-32 w-32 rounded-full relative flex justify-center p-4 items-center z-10 
+    md:h-52 md:w-52 lg:w-[300px] lg:h-[300px] lg:p-8`;
 
   return (
     <div>
@@ -102,11 +103,17 @@ function SelectionViewer({
             flex h-full w-full items-center justify-center 
             rounded-full bg-gray-200 shadow-userButtonInnerRingShadow"
           >
-            <img src={imageSelector(variant)} alt={variant} className="w-1/2" />
+            <img
+              src={imageSelector(variant)}
+              alt={variant}
+              className="w-1/2 lg:w-2/5"
+            />
           </div>
         </motion.div>
       </motion.div>
-      <p className="relative z-10 mt-6 tracking-widest text-white">{text}</p>
+      <p className="relative z-10 mt-6 tracking-widest text-white md:text-xl">
+        {text}
+      </p>
     </div>
   );
 }
