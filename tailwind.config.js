@@ -35,9 +35,12 @@ export default {
         userPentagonBg: "url('/bg-pentagon.svg')",
       },
       boxShadow: {
-        userButtonOuterRingShadow: "inset 0px -8px 0px 0px rgba(0,0,0,0.2)",
-        userButtonInnerRingShadow:
-          "inset 0px 10px 0px -6px rgba(133,133,133,0.3)",
+        userButtonOuterRingShadowMobile: "inset 0px -8px 0px 0px rgba(0,0,0,0.2)",
+        userButtonOuterRingShadowDesktop: "inset 0px -14px 0px 0px rgba(0,0,0,0.2)",
+        userButtonInnerRingShadowMobile:
+          "inset 0px 12px 0px -6px rgba(133,133,133,0.3)",
+        userButtonInnerRingShadowDesktop:
+          "inset 0px 16px 0px -6px rgba(133,133,133,0.3)",
       },
     },
   },

@@ -23,12 +23,13 @@ const imageSelector = (variant: GameValues) => {
 };
 
 const variantStyles = {
-  scissors:
-    "bg-gradient-to-b from-userScissorsGradient1 to-userScissorsGradient2 -top-14 left-1/2 -translate-x-1/2",
-  spock: "bg-teal-500 -left-4 top-6",
-  paper: "bg-blue-500 -right-4 top-6",
-  lizard: "bg-purple-500 -bottom-10 left-6",
-  rock: "bg-red-500 -bottom-10 right-6",
+  scissors: `
+    bg-gradient-to-b from-userScissorsGradient1 to-userScissorsGradient2 -top-14 left-1/2 -translate-x-1/2
+    md:-top-20`,
+  spock: "bg-teal-500 -left-4 top-6 md:-left-16 md:top-12",
+  paper: "bg-blue-500 -right-4 top-6 md:-right-16 md:top-12",
+  lizard: "bg-purple-500 -bottom-10 left-6 md:-bottom-20 md:left-0",
+  rock: "bg-red-500 -bottom-10 right-6 md:-bottom-20 md:right-0",
 };
 
 interface Props {
@@ -38,7 +39,7 @@ interface Props {
 
 function SelectionButton({ variant, handleClick }: Props) {
   const baseStyles =
-    "absolute h-24 w-24 rounded-full p-3 shadow-userButtonOuterRingShadow";
+    "absolute h-24 w-24 rounded-full p-3 shadow-userButtonOuterRingShadowMobile md:p-5 md:h-[150px] md:w-[150px]";
 
   return (
     <button
@@ -50,8 +51,8 @@ function SelectionButton({ variant, handleClick }: Props) {
       <div className="h-full w-full rounded-full shadow-md">
         <div
           className="
-          shadow-userButtonInnerRingShadow flex h-full w-full items-center justify-center 
-          rounded-full bg-gray-200"
+          shadow-userButtonInnerRingShadowMobile flex h-full w-full items-center 
+          justify-center rounded-full bg-gray-200"
         >
           <img src={imageSelector(variant)} alt={variant} className="w-1/2" />
         </div>

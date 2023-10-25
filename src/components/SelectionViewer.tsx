@@ -6,6 +6,7 @@ import paper from "../assets/images/icon-paper.svg";
 import lizard from "../assets/images/icon-lizard.svg";
 import rock from "../assets/images/icon-rock.svg";
 import useGameStore from "../store/useGameStore";
+import useBreakpoint from "../hooks/useBreakpoint";
 
 const imageSelector = (variant: GameValues) => {
   switch (variant) {
@@ -43,16 +44,30 @@ const innerAnimations: Variants = {
   animate: { rotateY: 0, transition: { duration: 0.3, delay: 3.3 } },
 };
 
-const shadowAnimation: Variants = {
+const shadowAnimationMobile: Variants = {
   initial: { boxShadow: "inset 0px -8px 0px 0px rgba(0,0,0,0.2)" },
   animate: {
     zIndex: 0,
     boxShadow: `
-      inset 0px -8px 0px 0px rgba(0,0,0,0.2),
-      0 0 0 1rem hsla(220, 34%, 26%, 0.5),
-      0 0 0 3rem hsla(220, 38%, 24%, 0.5),
-      0 0 0 5rem hsla(220, 41%, 22%, 0.5)
-    `,
+        inset 0px -8px 0px 0px rgba(0,0,0,0.2),
+        0 0 0 1rem hsla(220, 34%, 26%, 0.5),
+        0 0 0 3rem hsla(220, 38%, 24%, 0.5),
+        0 0 0 5rem hsla(220, 41%, 22%, 0.5)
+      `,
+    transition: { duration: 0.5, delay: 3.8 },
+  },
+};
+
+const shadowAnimationDesktop: Variants = {
+  initial: { boxShadow: "inset 0px -14px 0px 0px rgba(0,0,0,0.2)" },
+  animate: {
+    zIndex: 0,
+    boxShadow: `
+        inset 0px -14px 0px 0px rgba(0,0,0,0.2),
+        0 0 0 4rem hsla(220, 34%, 26%, 0.2),
+        0 0 0 8rem hsla(220, 38%, 24%, 0.3),
+        0 0 0 12rem hsla(220, 41%, 22%, 0.3)
+      `,
     transition: { duration: 0.5, delay: 3.8 },
   },
 };
@@ -71,15 +86,16 @@ function SelectionViewer({
   animated = false,
 }: Props) {
   const lastWinner = useGameStore((state) => state.lastWinner);
+  const { isBelowLg } = useBreakpoint("lg");
 
   const baseStyles = `
     h-32 w-32 rounded-full relative flex justify-center p-4 items-center z-10 
-    md:h-52 md:w-52 lg:w-[300px] lg:h-[300px] lg:p-8`;
+    md:h-52 md:w-52 md:p-6 lg:w-[300px] lg:h-[300px] lg:p-8`;
 
   return (
     <div>
       <motion.div
-        variants={shadowAnimation}
+        variants={isBelowLg ? shadowAnimationMobile : shadowAnimationDesktop}
         initial="initial"
         animate={lastWinner === playerOrComputer && "animate"}
         className={`${baseStyles} ${variantStyles[variant]}`}
@@ -100,8 +116,8 @@ function SelectionViewer({
         >
           <div
             className="
-            flex h-full w-full items-center justify-center 
-            rounded-full bg-gray-200 shadow-userButtonInnerRingShadow"
+            shadow-userButtonInnerRingShadowMobile md:shadow-userButtonInnerRingShadowDesktop flex h-full w-full 
+            items-center justify-center rounded-full bg-gray-200"
           >
             <img
               src={imageSelector(variant)}
