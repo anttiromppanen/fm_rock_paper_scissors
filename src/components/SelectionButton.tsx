@@ -26,10 +26,18 @@ const variantStyles = {
   scissors: `
     bg-gradient-to-b from-userScissorsGradient1 to-userScissorsGradient2 -top-14 left-1/2 -translate-x-1/2
     md:-top-20`,
-  spock: "bg-teal-500 -left-4 top-6 md:-left-16 md:top-12",
-  paper: "bg-blue-500 -right-4 top-6 md:-right-16 md:top-12",
-  lizard: "bg-purple-500 -bottom-10 left-6 md:-bottom-20 md:left-0",
-  rock: "bg-red-500 -bottom-10 right-6 md:-bottom-20 md:right-0",
+  spock: `
+    bg-gradient-to-b from-userSpockGradient1 to-userSpockGradient2 -left-4 top-6 
+    md:-left-16 md:top-12`,
+  paper: `
+    bg-gradient-to-b from-userPaperGradient1 to-userPaperGradient2 -right-4 top-6 
+    md:-right-16 md:top-12`,
+  lizard: `
+    bg-gradient-to-b from-userLizardGradient1 to-userLizardGradient2 -bottom-10 left-6 
+    md:-bottom-20 md:left-0`,
+  rock: `
+    bg-gradient-to-b from-userRockGradient1 to-userRockGradient2 -bottom-10 right-6 
+    md:-bottom-20 md:right-0`,
 };
 
 interface Props {

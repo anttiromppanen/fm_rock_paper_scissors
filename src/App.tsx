@@ -38,7 +38,7 @@ function App() {
       <div className="px-8 pt-10">
         <header
           className="
-          mx-auto flex max-w-[702px] items-center justify-between rounded-lg border-2 
+          relative z-10 mx-auto flex max-w-[702px] items-center justify-between rounded-lg border-2
           border-userHeaderOutline p-3 pl-6 md:px-6 md:pb-4 md:pt-5"
         >
           <img

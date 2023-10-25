@@ -93,7 +93,7 @@ function SelectionViewer({
     md:h-52 md:w-52 md:p-6 lg:w-[300px] lg:h-[300px] lg:p-8`;
 
   return (
-    <div>
+    <div className="flex flex-col gap-y-6 md:flex-col-reverse md:gap-y-12">
       <motion.div
         variants={isBelowLg ? shadowAnimationMobile : shadowAnimationDesktop}
         initial="initial"
@@ -127,7 +127,7 @@ function SelectionViewer({
           </div>
         </motion.div>
       </motion.div>
-      <p className="relative z-10 mt-6 tracking-widest text-white md:text-xl">
+      <p className="relative z-10 tracking-widest text-white md:text-2xl">
         {text}
       </p>
     </div>
