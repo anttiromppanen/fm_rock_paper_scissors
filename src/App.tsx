@@ -1,5 +1,6 @@
 import { AnimatePresence, Variants, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import RulesInfo from "./components/RulesInfo";
 import logo from "./assets/images/logo-bonus.svg";
 import GameView from "./components/GameView/GameView";
 import ResultView from "./components/ResultView/ResultView";
@@ -14,10 +15,17 @@ const gameViewVariants: Variants = {
   show: {},
 };
 
+const rulesMenuOverlayVariants: Variants = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { duration: 0.5 } },
+  exit: { opacity: 0, transition: { duration: 0.5 } },
+};
+
 function App() {
   const score = useGameStore((state) => state.score);
   const valueSelected = useGameStore((state) => state.valueSelected);
   const [debouncedScore, setDebouncedScore] = useState(score);
+  const [rulesMenuOpen, setRulesMenuOpen] = useState(false);
   const initialRender = useRef(true);
 
   // add delay for score update
@@ -33,8 +41,23 @@ function App() {
     return undefined;
   }, [initialRender, score]);
 
+  const handleMenuClose = () => setRulesMenuOpen(false);
+
   return (
     <main className="min-h-[100dvh] overflow-x-hidden bg-userRadialBg md:min-h-screen">
+      <AnimatePresence>
+        {rulesMenuOpen && (
+          <motion.button
+            type="button"
+            variants={rulesMenuOverlayVariants}
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            onClick={() => setRulesMenuOpen(false)}
+            className="fixed left-0 top-0 z-20 h-full w-full bg-black/70"
+          />
+        )}
+      </AnimatePresence>
       <div className="px-8 pt-10">
         <header
           className="
@@ -73,6 +96,18 @@ function App() {
           )}
         </AnimatePresence>
       </div>
+      <button
+        type="button"
+        onClick={() => setRulesMenuOpen(true)}
+        className="
+          fixed bottom-14 left-1/2 w-fit -translate-x-1/2 rounded-xl border border-white/60 px-8 py-2
+          tracking-widest text-white/90 md:bottom-8 md:left-auto md:right-8 md:translate-x-0 md:px-10"
+      >
+        RULES
+      </button>
+      <AnimatePresence>
+        {rulesMenuOpen && <RulesInfo handleMenuClose={handleMenuClose} />}
+      </AnimatePresence>
     </main>
   );
 }

@@ -42,7 +42,8 @@ function GameView() {
       initial="hidden"
       animate="show"
       className="
-      relative mx-auto mt-32 h-52 max-w-[264px] bg-userPentagonBg bg-contain bg-center bg-no-repeat md:h-80 md:max-w-[360px]"
+        relative mx-auto mt-32 h-52 max-w-[264px] bg-userPentagonBg bg-contain bg-center bg-no-repeat
+        md:h-80 md:max-w-[360px]"
     >
       <SelectionButton
         variant="scissors"
