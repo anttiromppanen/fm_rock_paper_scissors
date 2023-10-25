@@ -23,7 +23,11 @@ function ResultView() {
           initial={{ opacity: 0, x: -100 }}
           animate="show"
         >
-          <SelectionViewer variant={playerSelection} text="YOU PICKED" />
+          <SelectionViewer
+            variant={playerSelection}
+            text="YOU PICKED"
+            playerOrComputer="player"
+          />
         </motion.div>
         <motion.div
           variants={animationVariants}
@@ -35,6 +39,7 @@ function ResultView() {
               variant={computerSelection}
               animated
               text="THE HOUSE PICKED"
+              playerOrComputer="computer"
             />
           </motion.div>
         </motion.div>

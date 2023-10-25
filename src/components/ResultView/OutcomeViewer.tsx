@@ -31,11 +31,11 @@ function OutcomeViewer() {
       animate="show"
       className="mt-16 flex flex-col items-center"
     >
-      <h1 className="text-5xl tracking-wide text-white">{outcomeText()}</h1>
+      <h1 className="text-6xl tracking-wide text-white">{outcomeText()}</h1>
       <button
         type="button"
         onClick={() => setValueSelected(false)}
-        className="mt-5 rounded-xl bg-white px-16 py-3 text-xl tracking-widest text-userDarkText"
+        className="mt-6 rounded-xl bg-white px-16 py-3 text-xl tracking-widest text-userDarkText"
       >
         PLAY AGAIN
       </button>

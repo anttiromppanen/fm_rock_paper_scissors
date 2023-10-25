@@ -5,6 +5,7 @@ import spock from "../assets/images/icon-spock.svg";
 import paper from "../assets/images/icon-paper.svg";
 import lizard from "../assets/images/icon-lizard.svg";
 import rock from "../assets/images/icon-rock.svg";
+import useGameStore from "../store/useGameStore";
 
 const imageSelector = (variant: GameValues) => {
   switch (variant) {
@@ -33,7 +34,7 @@ const variantStyles = {
 };
 
 const overlayAnimations: Variants = {
-  initial: { rotateY: 0 },
+  initial: { rotateY: 0, overflow: "hidden" },
   animate: { rotateY: 90, transition: { duration: 0.3, delay: 3 } },
 };
 
@@ -42,24 +43,52 @@ const innerAnimations: Variants = {
   animate: { rotateY: 0, transition: { duration: 0.3, delay: 3.3 } },
 };
 
+const shadowAnimation: Variants = {
+  initial: { boxShadow: "inset 0px -8px 0px 0px rgba(0,0,0,0.2)" },
+  animate: {
+    zIndex: 0,
+    boxShadow: `
+      inset 0px -8px 0px 0px rgba(0,0,0,0.2),
+      0 0 0 1rem hsla(220, 34%, 26%, 0.5),
+      0 0 0 3rem hsla(220, 38%, 24%, 0.5),
+      0 0 0 5rem hsla(220, 41%, 22%, 0.5)
+    `,
+    transition: { duration: 0.5, delay: 3.8 },
+  },
+};
+
 interface Props {
   variant: GameValues;
   text: string;
+  playerOrComputer: "player" | "computer";
   animated?: boolean;
 }
 
-function SelectionViewer({ variant, text, animated = false }: Props) {
+function SelectionViewer({
+  variant,
+  text,
+  playerOrComputer,
+  animated = false,
+}: Props) {
+  const lastWinner = useGameStore((state) => state.lastWinner);
+
   const baseStyles =
-    "h-32 w-32 rounded-full relative flex justify-center items-center p-4 overflow-hidden shadow-userButtonOuterRingShadow";
+    "h-32 w-32 rounded-full relative flex justify-center p-4 items-center z-10";
+
   return (
     <div>
-      <motion.div className={`${baseStyles} ${variantStyles[variant]}`}>
+      <motion.div
+        variants={shadowAnimation}
+        initial="initial"
+        animate={lastWinner === playerOrComputer && "animate"}
+        className={`${baseStyles} ${variantStyles[variant]}`}
+      >
         {animated && (
           <motion.div
             variants={overlayAnimations}
             initial="initial"
             animate="animate"
-            className="bg-userBgGradient1 absolute left-0 top-0 h-full w-full rounded-full"
+            className="absolute -left-1 -top-1 h-[105%] w-[105%] rounded-full bg-userBgGradient1"
           />
         )}
         <motion.div
@@ -70,14 +99,14 @@ function SelectionViewer({ variant, text, animated = false }: Props) {
         >
           <div
             className="
-          shadow-userButtonInnerRingShadow flex h-full w-full items-center justify-center 
-          rounded-full bg-gray-200"
+            flex h-full w-full items-center justify-center 
+            rounded-full bg-gray-200 shadow-userButtonInnerRingShadow"
           >
             <img src={imageSelector(variant)} alt={variant} className="w-1/2" />
           </div>
         </motion.div>
       </motion.div>
-      <p className="mt-6 tracking-widest text-white">{text}</p>
+      <p className="relative z-10 mt-6 tracking-widest text-white">{text}</p>
     </div>
   );
 }

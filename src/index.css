@@ -2,3 +2,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .selectionViewerShadow {
+    z-index: 0;
+    box-shadow: 
+      inset 0px -8px 0px 0px rgba(0,0,0,0.2),
+      0 0 0 1rem hsla(220, 34%, 26%, 0.5),
+      0 0 0 3rem hsla(220, 38%, 24%, 0.5),
+      0 0 0 5rem hsla(220, 41%, 22%, 0.5) !important;
+  }
+}
