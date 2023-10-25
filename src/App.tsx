@@ -44,7 +44,7 @@ function App() {
   const handleMenuClose = () => setRulesMenuOpen(false);
 
   return (
-    <main className="min-h-[100dvh] overflow-x-hidden bg-userRadialBg md:min-h-screen">
+    <main className="no-scrollbar::-webkit-scrollbar no-scrollbar min-h-[100dvh] overflow-x-hidden bg-userRadialBg md:min-h-screen">
       <AnimatePresence>
         {rulesMenuOpen && (
           <motion.button
@@ -101,7 +101,8 @@ function App() {
         onClick={() => setRulesMenuOpen(true)}
         className="
           fixed bottom-14 left-1/2 w-fit -translate-x-1/2 rounded-xl border border-white/60 px-8 py-2
-          tracking-widest text-white/90 md:bottom-8 md:left-auto md:right-8 md:translate-x-0 md:px-10"
+          tracking-widest text-white/90 hover:bg-white hover:text-userDarkText
+          md:bottom-8 md:left-auto md:right-8 md:translate-x-0 md:px-10"
       >
         RULES
       </button>

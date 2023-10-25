@@ -34,7 +34,8 @@ function RulesInfo({ handleMenuClose }: Props) {
       exit="exit"
       className="
         fixed left-0 top-0 z-20 flex h-[100dvh] w-full flex-col items-center bg-white
-        md:left-1/2 md:top-1/2 md:h-auto md:w-auto md:items-start md:rounded-xl md:p-10 md:pb-14"
+        md:left-1/2 md:top-1/2 md:h-auto md:w-auto md:items-start md:rounded-xl md:p-10
+        md:pb-14"
     >
       <div className="my-24 flex w-full items-center justify-center md:my-0 md:mb-6 md:justify-between">
         <h2 className="text-4xl font-bold text-userBgGradient2">RULES</h2>

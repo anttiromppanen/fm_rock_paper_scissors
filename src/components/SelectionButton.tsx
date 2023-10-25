@@ -46,8 +46,9 @@ interface Props {
 }
 
 function SelectionButton({ variant, handleClick }: Props) {
-  const baseStyles =
-    "absolute h-24 w-24 rounded-full p-3 shadow-userButtonOuterRingShadowMobile md:p-5 md:h-[150px] md:w-[150px]";
+  const baseStyles = `
+    absolute h-24 w-24 rounded-full p-3 shadow-userButtonOuterRingShadowMobile 
+    md:p-5 md:h-[150px] md:w-[150px] hover:brightness-125`;
 
   return (
     <button
@@ -59,10 +60,14 @@ function SelectionButton({ variant, handleClick }: Props) {
       <div className="h-full w-full rounded-full shadow-md">
         <div
           className="
-          shadow-userButtonInnerRingShadowMobile flex h-full w-full items-center 
-          justify-center rounded-full bg-gray-200"
+          shadow-userButtonInnerRingShadowMobile flex h-full w-full 
+          items-center justify-center rounded-full bg-gray-200"
         >
-          <img src={imageSelector(variant)} alt={variant} className="w-1/2" />
+          <img
+            src={imageSelector(variant)}
+            alt={variant}
+            className="w-1/2 select-none"
+          />
         </div>
       </div>
     </button>

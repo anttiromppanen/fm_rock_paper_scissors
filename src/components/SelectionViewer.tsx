@@ -122,7 +122,7 @@ function SelectionViewer({
             <img
               src={imageSelector(variant)}
               alt={variant}
-              className="w-1/2 lg:w-2/5"
+              className="w-1/2 select-none lg:w-2/5"
             />
           </div>
         </motion.div>
